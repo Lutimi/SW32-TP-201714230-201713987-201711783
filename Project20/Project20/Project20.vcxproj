@@ -145,7 +145,6 @@
     <ClInclude Include="Helados.h" />
     <ClInclude Include="ListaClientes.h" />
     <ClInclude Include="Lista.h" />
-    <ClInclude Include="LISTADE.h" />
     <ClInclude Include="Lista_Cl.h" />
     <ClInclude Include="Motor.h" />
     <ClInclude Include="MyForm.h">
@@ -154,6 +153,7 @@
     <ClInclude Include="MyForm2.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Pila.h" />
     <ClInclude Include="VecHelados.h" />
   </ItemGroup>
   <ItemGroup>

@@ -62,7 +62,7 @@
     <ClInclude Include="VecHelados.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="LISTADE.h">
+    <ClInclude Include="Pila.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
