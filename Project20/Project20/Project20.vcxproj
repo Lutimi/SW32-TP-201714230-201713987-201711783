@@ -143,8 +143,8 @@
     <ClInclude Include="CPersonaje.h" />
     <ClInclude Include="Escenario.h" />
     <ClInclude Include="Helados.h" />
-    <ClInclude Include="ListaClientes.h" />
     <ClInclude Include="Lista.h" />
+    <ClInclude Include="listadoblementenlazada.h" />
     <ClInclude Include="Lista_Cl.h" />
     <ClInclude Include="Motor.h" />
     <ClInclude Include="MyForm.h">

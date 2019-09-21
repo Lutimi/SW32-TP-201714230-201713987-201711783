@@ -53,9 +53,6 @@
     <ClInclude Include="CCliente.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ListaClientes.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Helados.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -63,6 +60,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Pila.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="listadoblementenlazada.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
