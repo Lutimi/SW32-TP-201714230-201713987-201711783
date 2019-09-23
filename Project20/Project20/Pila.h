@@ -1,55 +1,66 @@
 #pragma once
-#pragma once
 
-template <typename T>
-class pila {
+#include <iostream>
 
-	struct  Nodo
-	{
-		T*elemento;
-		Nodo*next;
+using namespace std;
 
-		Nodo(T*elemento, Nodo*next = nullptr) : elemento(elemento), next(next) {}
+typedef unsigned int uint;
+
+template<typename T>
+ref class Cola {
+	ref class Nodo {
+	public:
+		T elem;
+		Nodo^ sig;
+		Nodo(T elem) :elem(elem), sig(nullptr) {}
+		Nodo(T elem, Nodo^ sig) :elem(elem), sig(sig) {}
 	};
-
-	Nodo*_top;
-	int longitud;
+	Nodo^ frente;
+	Nodo^ fin;
 
 public:
-
-	pila() : _top(nullptr), longitud(0) {}
-	~pila() {
-		while (_top != nullptr) {
-			Nodo*aux = _top;
-			_top = _top->next;
-			delete aux;
-		}
+	uint lon;
+	Cola() {
+		this->frente = nullptr;
+		this->fin = nullptr;
+		this->lon = 0;
 	}
-
-	bool is_empty() { return longitud == nullptr; }
-
-
-	void push(T*elemento) {
-		_top = new Nodo(elemento, _top);
-		++logitud;
-	}
-
-	void pop() {
-
-		id(!is_empty()) {
-			Nodo*aux = _top;
-			_top = _top->next;
-			delete aux;
-			--longitud;
-		}
-	}
-
-	T top() {
-		if (!is_empty()) {
-			return _top->elemento;
-		}
-
-		return0;
-	}
-
+	void insertarCola(T elem);
+	void eliminarCola();
+	bool Cola_Vacia(Nodo^ frente);
 };
+
+template<typename T>
+void Cola<T>::insertarCola(T elem)
+{
+	Nodo^ nuevo_nodo = gcnew Nodo(elem);
+	if (Cola_Vacia(this->frente)) {
+		this->frente = nuevo_nodo;
+	}
+	else {
+		this->fin->sig = nuevo_nodo;
+	}
+	this->fin = nuevo_nodo;
+	this->lon++;
+}
+
+template<typename T>
+void Cola<T>::eliminarCola()
+{
+	Nodo^ aux = this->frente;
+	if (this->frente == fin) {
+		this->frente = nullptr;
+		this->fin = nullptr;
+	}
+	else
+	{
+		this->frente = this->frente->sig;
+	}
+	delete aux;
+	this->lon--;
+}
+template<typename T>
+bool Cola<T>::Cola_Vacia(Nodo^ frente)
+{
+	return(frente == nullptr) ? true : false;
+}
