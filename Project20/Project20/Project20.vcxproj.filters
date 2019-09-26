@@ -53,16 +53,22 @@
     <ClInclude Include="CCliente.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ListaClientes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="Helados.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="VecHelados.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Pila.h">
+    <ClInclude Include="VecHelados2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="listadoblementenlazada.h">
+    <ClInclude Include="pila.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="listaprueba.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

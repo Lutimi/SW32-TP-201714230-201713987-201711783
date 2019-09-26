@@ -92,32 +92,32 @@ public:
 	{
 		return a.IntersectsWith(b);
 	}
-	void colision_Helados()
-	{
-		for each (Helados * bal in oHelados->Getvec())
-		{
-			for each (Cliente * ast in Lista->getlist())
-			{
-				if (Colision(bal->retornarRectagulo(), ast->retornarRectagulo()))
-				{
-					
-					bal->setcolision(true);
-					ast->setColision(true);
-					oJugador->aumentar_entregar();
-					oHelados->BorrarMejoras();
-					/*Lista->eliminar();*/
-					
-				}
-			}
-		}
-	}
+	//void colision_Helados()
+	//{
+	//	for each (Helados * bal in oHelados->Getvec())
+	//	{
+	//		for each (Cliente * ast in Lista->getlist())
+	//		{
+	//			if (Colision(bal->retornarRectagulo(), ast->retornarRectagulo()))
+	//			{
+	//				
+	//				bal->setcolision(true);
+	//				ast->setColision(true);
+	//				oJugador->aumentar_entregar();
+	//				oHelados->BorrarMejoras();
+	//				/*Lista->eliminar();*/
+	//				
+	//			}
+	//		}
+	//	}
+	//}
 	void AddClientes() {
 		Lista->AgregarClientes();
 	}
 	void addHelados() {
 		oHelados->crearmejoras();
 	}
-	void EliminarC() {
+	/*void EliminarC() {
 
 		if (Lista->getlist().empty() == 0)
 		{
@@ -134,7 +134,7 @@ public:
 			}
 			Lista->setVecclientes(CopiaClientes);
 		}
-	}
+	}*/
 	/*void entregarhelado() {
 
 

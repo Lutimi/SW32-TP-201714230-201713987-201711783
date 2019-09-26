@@ -30,7 +30,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CLRSupport>true</CLRSupport>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -143,8 +143,9 @@
     <ClInclude Include="CPersonaje.h" />
     <ClInclude Include="Escenario.h" />
     <ClInclude Include="Helados.h" />
+    <ClInclude Include="ListaClientes.h" />
     <ClInclude Include="Lista.h" />
-    <ClInclude Include="listadoblementenlazada.h" />
+    <ClInclude Include="listaprueba.h" />
     <ClInclude Include="Lista_Cl.h" />
     <ClInclude Include="Motor.h" />
     <ClInclude Include="MyForm.h">
@@ -153,8 +154,9 @@
     <ClInclude Include="MyForm2.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="Pila.h" />
+    <ClInclude Include="pila.h" />
     <ClInclude Include="VecHelados.h" />
+    <ClInclude Include="VecHelados2.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MyForm.resx">

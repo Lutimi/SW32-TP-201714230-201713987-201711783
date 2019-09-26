@@ -1,4 +1,5 @@
 #include "CCliente.h"
+#include "listaprueba.h"
 #include <list>
 
 using namespace std;
@@ -6,11 +7,11 @@ using namespace System;
 class ListaClientes
 {
 private:
-	list<Cliente*> Clientes;
+	Lista<Cliente> Clientes;
 
 public:
 	ListaClientes() {
-		Clientes = list<Cliente*>();
+		Clientes = Lista<Cliente>();
 		
 	}
 	/*ListaClientes() {
@@ -20,24 +21,24 @@ public:
 
 	}*/
 	void AgregarClientes() {
-		Cliente* nuevo = new Cliente();
+		Cliente *nuevo = new Cliente();
 
-		Clientes.push_back(nuevo);
+		Clientes.agregarIni(*nuevo);
 
 	}
 	void eliminar() {
-		for (int i = 0; i < Clientes.size(); i++) {
-			Clientes.erase(Clientes.begin());
+		for (int i = 0; i < Clientes.longitud(); i++) {
+			Clientes.eliminaInicial();
 		}
 	}
-	void DibijarClientes(Graphics^ g, Bitmap^ bmpCliente) {
+	/*void DibijarClientes(Graphics^ g, Bitmap^ bmpCliente) {
 
 		for each (Cliente * var in Clientes)
 
 			var->dibujarCliente(g, bmpCliente);
 
 
-	}
+	}*/
 	//void dibujar(Graphics^ g, Bitmap^ bmpClientes) {
 	//	for (int i = 0; i < Clientes.size(); i++) {
 	//		switch (Clientes.at(i)->getEstado()) {
@@ -60,11 +61,11 @@ public:
 
 		}
 	}*/
-	list<Cliente*> getlist() { return Clientes; }
+	Lista<Cliente*> getlist() { return Clientes.obtInicial; }
 
-	void setVecclientes(list<Cliente*>vec)
+	void setVecclientes(int n)
 	{
-		Clientes = vec;
+		Clientes.obtenerPos(n);
 	}
 	~ListaClientes(){}
 };
