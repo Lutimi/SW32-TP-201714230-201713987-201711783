@@ -84,7 +84,7 @@ public:
 			{
 				_lluviadeclientes->eliminaPos(i);
 				_lluviadehelados->eliminaFinal();
-			
+				oJugador->aumentar_entregar();
 
 			}
 				
