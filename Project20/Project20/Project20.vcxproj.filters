@@ -68,6 +68,9 @@
     <ClInclude Include="pila.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="listaprueba.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MyForm.resx">
