@@ -224,11 +224,11 @@ namespace Project20 {
 			oMotor->addHelados();
 		
 		}
-		
+		/*
 		if (segundos % 50 == 0)
 		{
 			oMotor->addHelados();
-		}
+		}*/
 		
 		
 		buffer->Render();

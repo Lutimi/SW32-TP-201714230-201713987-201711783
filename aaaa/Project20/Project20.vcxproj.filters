@@ -59,10 +59,10 @@
     <ClInclude Include="Helados.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="pila.h">
+    <ClInclude Include="ListaHelados.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ListaHelados.h">
+    <ClInclude Include="Cola.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

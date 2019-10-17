@@ -7,6 +7,7 @@
 #include "Lista.h"
 #include "Helados.h"
 #include "CCliente.h"
+#include "Cola.h"
 using namespace std;
 using namespace System;
 
@@ -18,6 +19,7 @@ private:
 	Escenario * oEscenario;
 	Lista<Cliente*>* lluviadeclientes;
 	Lista<Helados*>* lluviadehelados;
+	Cola<Helados*>* guardarhelados;
 
 
 
@@ -33,7 +35,7 @@ public:
 		oJugador = new CPersonaje();
 		lluviadehelados = new Lista<Helados*>();
 		lluviadeclientes = new Lista<Cliente*>();
-
+		guardarhelados = new Cola<Helados*>();
 
 
 		

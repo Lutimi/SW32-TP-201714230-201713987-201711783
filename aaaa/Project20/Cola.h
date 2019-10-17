@@ -1,22 +1,20 @@
 #pragma once
-
 #include <iostream>
-
 using namespace std;
 
 typedef unsigned int uint;
 
 template<typename T>
-ref class Cola {
-	ref class Nodo {
+class Cola {
+	class Nodo {
 	public:
 		T elem;
-		Nodo^ sig;
+		Nodo* sig;
 		Nodo(T elem) :elem(elem), sig(nullptr) {}
-		Nodo(T elem, Nodo^ sig) :elem(elem), sig(sig) {}
+		Nodo(T elem, Nodo* sig) :elem(elem), sig(sig) {}
 	};
-	Nodo^ frente;
-	Nodo^ fin;
+	Nodo* frente;
+	Nodo* fin;
 
 public:
 	uint lon;
@@ -27,13 +25,13 @@ public:
 	}
 	void insertarCola(T elem);
 	void eliminarCola();
-	bool Cola_Vacia(Nodo^ frente);
+	bool Cola_Vacia(Nodo* frente);
 };
 
 template<typename T>
 void Cola<T>::insertarCola(T elem)
 {
-	Nodo^ nuevo_nodo = gcnew Nodo(elem);
+	Nodo* nuevo_nodo = new Nodo(elem);
 	if (Cola_Vacia(this->frente)) {
 		this->frente = nuevo_nodo;
 	}
@@ -47,7 +45,7 @@ void Cola<T>::insertarCola(T elem)
 template<typename T>
 void Cola<T>::eliminarCola()
 {
-	Nodo^ aux = this->frente;
+	Nodo* aux = this->frente;
 	if (this->frente == fin) {
 		this->frente = nullptr;
 		this->fin = nullptr;
@@ -60,7 +58,7 @@ void Cola<T>::eliminarCola()
 	this->lon--;
 }
 template<typename T>
-bool Cola<T>::Cola_Vacia(Nodo^ frente)
+bool Cola<T>::Cola_Vacia(Nodo* frente)
 {
 	return(frente == nullptr) ? true : false;
 }
