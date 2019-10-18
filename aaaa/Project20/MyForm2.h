@@ -49,7 +49,7 @@ namespace Project20 {
 			bmpHelados->MakeTransparent(bmpHelados->GetPixel(1, 2));
 			bmpJugador->MakeTransparent(bmpJugador->GetPixel(1, 2));
 			bmpCliente->MakeTransparent(bmpCliente->GetPixel(1, 1));
-			bmpDinero->MakeTransparent(bmpCliente->GetPixel(1, 1));
+			bmpDinero->MakeTransparent(bmpDinero->GetPixel(1, 2));
 		
 			//
 			//TODO: Add the constructor code here
@@ -206,7 +206,8 @@ namespace Project20 {
 		segundos++;
 		ofstream points;
 		points.open("game.txt");
-		points << "Puntaje: " << oMotor->getoJugador()->getentregados()
+		points << "Puntaje: " << oMotor->getoJugador()->getentregados(); ',';
+		points << "Cola: " << oMotor->getcontadorC();
 			;
 		points.close();
 		// cargar progreso
@@ -219,7 +220,7 @@ namespace Project20 {
 				}
 				points.close();*/
 		
-		if (segundos % 50 == 0)
+		if (segundos % 100 == 0)
 		{
 			oMotor->AddClientes();
 			oMotor->addHelados();

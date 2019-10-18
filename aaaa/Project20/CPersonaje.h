@@ -208,4 +208,5 @@ public:
 	void sety(int y) { this->y = y; }
 	int getentregados() { return this->entregados; }
 	
+	
 };	  
