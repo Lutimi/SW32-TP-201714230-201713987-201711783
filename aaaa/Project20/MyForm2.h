@@ -29,6 +29,7 @@ namespace Project20 {
 		Bitmap^bmpJugador = gcnew Bitmap("Imagenes\\Personaje2.png");
 		Bitmap^bmpMapa = gcnew Bitmap("Imagenes\\Mapa1.png");
 		Bitmap^bmpCliente = gcnew Bitmap("Imagenes\\A2.png");
+		Bitmap^bmpDinero = gcnew Bitmap("Imagenes\\dinero.png");
 	private: System::Windows::Forms::Button^  btn_nuevo;
 	private: System::Windows::Forms::Button^  btn_reanudar;
 	private: System::Windows::Forms::Button^  btn_guardar;
@@ -48,7 +49,7 @@ namespace Project20 {
 			bmpHelados->MakeTransparent(bmpHelados->GetPixel(1, 2));
 			bmpJugador->MakeTransparent(bmpJugador->GetPixel(1, 2));
 			bmpCliente->MakeTransparent(bmpCliente->GetPixel(1, 1));
-			
+			bmpDinero->MakeTransparent(bmpCliente->GetPixel(1, 1));
 		
 			//
 			//TODO: Add the constructor code here
@@ -200,7 +201,7 @@ namespace Project20 {
 #pragma endregion
 	private: System::Void timer1_Tick(System::Object^  sender, System::EventArgs^  e) {
 
-		oMotor->dibujar(buffer, bmpJugador, bmpMapa, bmpCliente, bmpHelados, oMotor->getoJugador()->getx(), oMotor->getoJugador()->gety());
+		oMotor->dibujar(buffer, bmpDinero, bmpJugador, bmpMapa, bmpCliente, bmpHelados, oMotor->getoJugador()->getx(), oMotor->getoJugador()->gety());
 		this->Text = " Vidas: " + oMotor->getoJugador()->getvidas() + "   Tiempo:   " + (oMotor->gettiempo() / 16) + "  Monedas:   " + oMotor->getoJugador()->getmonedas() + "  Puntaje: " + oMotor->getoJugador()->getentregados();
 		segundos++;
 		ofstream points;
@@ -222,12 +223,13 @@ namespace Project20 {
 		{
 			oMotor->AddClientes();
 			oMotor->addHelados();
+			oMotor->adddinero();
 		
 		}
-		/*
-		if (segundos % 50 == 0)
+		
+		/*if (segundos % 50 == 0)
 		{
-			oMotor->addHelados();
+			
 		}*/
 		
 		

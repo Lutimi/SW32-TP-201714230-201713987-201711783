@@ -4,61 +4,59 @@
 #include <iostream>
 #include <stdlib.h>
 
-enum Estados { normall, desaparecerr };
 
 using namespace System::Drawing;
 using namespace System;
 
-class Cliente
+class Dinero
 {
 private:
 	int x;
 	int y;
-	int indiceX;
+	int indiceXX;
 	int ancho;
 	int alto;
 	int tipo;
 	int v;
 	bool estado;
 	bool colision;
-	Estados estado1;
+
 
 public:
 
-	Cliente() {
+	Dinero() {
 		colision = false;
 		srand(time(NULL));
 		tipo = rand() % 2 + 1;
-		v = rand() % 3 + 1;
+		v = rand() % 4 + 1;
 		switch (v)
 		{
 		case 1:
-			x = 320;
-			y = 180;
+			x = 120;
+			y = 210;
 
 			break;
 		case 2:
 
-			x = 110;
-			y = 310;
-
-
-			break;
+			x = 220;
+			y = 120;
 		case 3:
-			x = 540;
-			y = 310;
+			x = 150;
+			y = 250;
+
 			break;
 		case 4:
 
-			x = 320;
-			y = 480;
-			break;
+			x = 120;
+			y = 50;
 
+
+			break;
 		}
-		estado1 = Estados::normall;
-		ancho = 477;
-		alto = 526;
-		indiceX = 0;
+	
+		ancho = 480;
+		alto = 530;
+		indiceXX = 0;
 
 
 		this->estado = true;
@@ -67,16 +65,16 @@ public:
 	Rectangle retornarRectangulo() {
 		return Rectangle(x, y, 65, 65);
 	}
-	void dibujarCliente(BufferedGraphics^buffer, Bitmap^ bmpCliente) {
+	void dibujardinero(BufferedGraphics^buffer, Bitmap^ bmpdinero) {
 		/*if (this->estado) {*/
-		Rectangle PorcionAUsar = Rectangle(indiceX*ancho, 0, ancho, alto);
+		Rectangle PorcionAUsar = Rectangle(indiceXX*ancho, 0, ancho, alto);
 		Rectangle aumento = Rectangle(x, y, 65, 65);
-		buffer->Graphics->DrawImage(bmpCliente, aumento, PorcionAUsar, GraphicsUnit::Pixel);
+		buffer->Graphics->DrawImage(bmpdinero, aumento, PorcionAUsar, GraphicsUnit::Pixel);
 
 	}
-	
-	
-	Estados getEstado1() { return estado1; }
+
+
+
 	bool getestado() { return this->estado; }
 	void setestado(bool estado) { this->estado = estado; }
 	int getx() { return this->x; }
@@ -87,5 +85,3 @@ public:
 	void setcolision(bool colision) { this->estado = colision; }
 
 };
-
-

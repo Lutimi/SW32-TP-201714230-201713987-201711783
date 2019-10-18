@@ -8,6 +8,7 @@
 #include "Helados.h"
 #include "CCliente.h"
 #include "Cola.h"
+#include "dinero.h"
 using namespace std;
 using namespace System;
 
@@ -19,9 +20,8 @@ private:
 	Escenario * oEscenario;
 	Lista<Cliente*>* lluviadeclientes;
 	Lista<Helados*>* lluviadehelados;
-	Cola<Helados*>* guardarhelados;
-
-
+	Lista<Dinero*>* lluviadedinero;
+	Cola<Dinero*>* guardardinero;
 
 	int nivel;
 	float tiempolevel1;
@@ -35,7 +35,9 @@ public:
 		oJugador = new CPersonaje();
 		lluviadehelados = new Lista<Helados*>();
 		lluviadeclientes = new Lista<Cliente*>();
-		guardarhelados = new Cola<Helados*>();
+		lluviadedinero = new Lista<Dinero*>();
+		guardardinero = new Cola<Dinero*>();
+		
 
 
 		
@@ -81,13 +83,25 @@ public:
 			{
 				_lluviadeclientes->eliminaPos(i);
 				_lluviadehelados->eliminaFinal();
+			
 
 			}
 				
 			}
 		}
 	
-	
+	void colisionD(Cola<Dinero*>* guardarhelado, Lista<Dinero*>* lluviadedinero) {
+		for (int i = 0; i < lluviadedinero->longitud(); i++) {
+			if (oJugador->retornarRectangle().IntersectsWith(lluviadedinero->obtenerPos(i)->retornarRectangulo()))
+			{
+				guardardinero->insertarCola(lluviadedinero->obtenerPos(i));
+				lluviadedinero->eliminaPos(i);
+
+
+			}
+
+		}
+	}
 	bool Colision(Rectangle a, Rectangle b)
 	{
 		return a.IntersectsWith(b);
@@ -120,8 +134,12 @@ public:
 
 	
 	void addHelados() {
-		lluviadehelados->agregaInicial(new Helados);
+		lluviadehelados->agregaInicial(new Helados());
 			
+	}
+	void adddinero() {
+		lluviadedinero->agregaInicial(new Dinero());
+
 	}
 	/*void EliminarC() {
 
@@ -148,14 +166,16 @@ public:
 
 	}*/
 		
-	void dibujar(BufferedGraphics^buffer, Bitmap^ bmpJugador, Bitmap^ bmpMapa, Bitmap^ bmpClientes,Bitmap^ bmpHelados, int XP, int YP) {
+	void dibujar(BufferedGraphics^buffer, Bitmap^ bmpdinero, Bitmap^ bmpJugador, Bitmap^ bmpMapa, Bitmap^ bmpClientes,Bitmap^ bmpHelados, int XP, int YP) {
 
 		oEscenario->dibujar(buffer, bmpMapa);
 		oJugador->mover(buffer, bmpJugador);
 		DibujarH(buffer, bmpHelados);
 		DibujarC(buffer, bmpClientes);
+		DibujarD(buffer, bmpdinero);
 		llevarHelado(lluviadehelados);
 		colisionC(lluviadeclientes, lluviadehelados);
+		colisionD(guardardinero, lluviadedinero);
 		tiempo();
 		
 	}
@@ -181,19 +201,20 @@ public:
 				lluviadeclientes->obtenerPos(i)->dibujarCliente(buffer, bmpcliente);
 				break;
 			case Estado::desaparecer:
-				lluviadeclientes->eliminaPos(i);
+				/*lluviadeclientes->eliminaPos(i);*/
 				break;
 			}
 		}
 	}
-	void DibujarClientes(BufferedGraphics ^ buffer, Bitmap^ bmpCliente) {
+	
+	
+	void DibujarD(BufferedGraphics ^buffer, Bitmap^ bmpdinero) {
+		for (int i = 0; i < lluviadedinero->longitud(); i++) {
 
-		for (Cliente *a : *lluviadeclientes) {
-
-			a->dibujarCliente(buffer, bmpCliente);
+			lluviadedinero->obtenerPos(i)->dibujardinero(buffer, bmpdinero);
 		}
-
 	}
+	
 	/*ListaHelados* getVechelados() { return oHelados; }*/
 	CPersonaje *getoJugador() { return oJugador; }
 	/*Lista * Getlistaclientes() { return lluviadeclientes; }*/

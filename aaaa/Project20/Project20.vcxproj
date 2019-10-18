@@ -141,6 +141,7 @@
     <ClInclude Include="CCliente.h" />
     <ClInclude Include="CGraphics.h" />
     <ClInclude Include="CPersonaje.h" />
+    <ClInclude Include="dinero.h" />
     <ClInclude Include="Escenario.h" />
     <ClInclude Include="Helados.h" />
     <ClInclude Include="ListaClientes.h" />
