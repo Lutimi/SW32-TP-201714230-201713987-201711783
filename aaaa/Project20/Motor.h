@@ -24,6 +24,7 @@ private:
 	Cola<Dinero*>* guardardinero;
 
 	int nivel;
+	int cola = 0;
 	float tiempolevel1;
 	bool levelcompletado1;
 
@@ -96,11 +97,14 @@ public:
 			{
 				guardardinero->insertarCola(lluviadedinero->obtenerPos(i));
 				lluviadedinero->eliminaPos(i);
-
+				cola++;
 
 			}
 
 		}
+	}
+	int getcontadorC() {
+		return cola;
 	}
 	bool Colision(Rectangle a, Rectangle b)
 	{

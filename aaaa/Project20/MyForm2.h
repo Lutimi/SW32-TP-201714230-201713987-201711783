@@ -202,7 +202,7 @@ namespace Project20 {
 	private: System::Void timer1_Tick(System::Object^  sender, System::EventArgs^  e) {
 
 		oMotor->dibujar(buffer, bmpDinero, bmpJugador, bmpMapa, bmpCliente, bmpHelados, oMotor->getoJugador()->getx(), oMotor->getoJugador()->gety());
-		this->Text = " Vidas: " + oMotor->getoJugador()->getvidas() + "   Tiempo:   " + (oMotor->gettiempo() / 16) + "  Monedas:   " + oMotor->getoJugador()->getmonedas() + "  Puntaje: " + oMotor->getoJugador()->getentregados();
+		this->Text = " Vidas: " + oMotor->getoJugador()->getvidas() + "   Tiempo:   " + (oMotor->gettiempo() / 16) + "  Monedas:   " + oMotor->getoJugador()->getmonedas() + "  Puntaje: " + oMotor->getoJugador()->getentregados()+ "  Cola:   " + oMotor->getcontadorC();
 		segundos++;
 		ofstream points;
 		points.open("game.txt");
