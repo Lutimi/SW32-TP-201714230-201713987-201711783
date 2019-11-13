@@ -22,7 +22,7 @@ namespace Project20 {
 		Graphics^ graficador;
 		BufferedGraphics^ buffer;
 		CPersonaje * pj;
-	
+		int vidas=5;
 		float second;
 		int segundos;
 		Bitmap^bmpHelados = gcnew Bitmap("Imagenes\\Helado.png");
@@ -49,7 +49,7 @@ namespace Project20 {
 			bmpHelados->MakeTransparent(bmpHelados->GetPixel(1, 2));
 			bmpJugador->MakeTransparent(bmpJugador->GetPixel(1, 2));
 			bmpCliente->MakeTransparent(bmpCliente->GetPixel(1, 1));
-			bmpDinero->MakeTransparent(bmpDinero->GetPixel(1, 2));
+			bmpDinero->MakeTransparent(bmpCliente->GetPixel(1, 1));
 		
 			//
 			//TODO: Add the constructor code here
@@ -89,7 +89,7 @@ namespace Project20 {
 		void InitializeComponent(void)
 		{
 			this->components = (gcnew System::ComponentModel::Container());
-			this->lblNivel = (gcnew System::Windows::Forms::Label());//holaa
+			this->lblNivel = (gcnew System::Windows::Forms::Label());
 			this->pbcarga = (gcnew System::Windows::Forms::ProgressBar());
 			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->trCarga = (gcnew System::Windows::Forms::Timer(this->components));
@@ -176,6 +176,7 @@ namespace Project20 {
 			this->btn_cargar->TabIndex = 7;
 			this->btn_cargar->Text = L"Cargar Partida";
 			this->btn_cargar->UseVisualStyleBackColor = true;
+			this->btn_cargar->Click += gcnew System::EventHandler(this, &MyForm2::btn_cargar_Click);
 			// 
 			// MyForm2
 			// 
@@ -202,13 +203,11 @@ namespace Project20 {
 	private: System::Void timer1_Tick(System::Object^  sender, System::EventArgs^  e) {
 
 		oMotor->dibujar(buffer, bmpDinero, bmpJugador, bmpMapa, bmpCliente, bmpHelados, oMotor->getoJugador()->getx(), oMotor->getoJugador()->gety());
-		this->Text = " Vidas: " + oMotor->getoJugador()->getvidas() + "   Tiempo:   " + (oMotor->gettiempo() / 16) + "  Monedas:   " + oMotor->getoJugador()->getmonedas() + "  Puntaje: " + oMotor->getoJugador()->getentregados()+ "  Cola:   " + oMotor->getcontadorC();
+		this->Text = " Vidas: " + vidas + "   Tiempo:   " + segundos/16 + "  Monedas:   " + oMotor->getoJugador()->getmonedas() + "  Puntaje: " + oMotor->getoJugador()->getentregados()+ "  Cola:   " + oMotor->getcontadorC();
 		segundos++;
 		ofstream points;
 		points.open("game.txt");
-		points << "Puntaje: " << oMotor->getoJugador()->getentregados(); ',';
-		points << "Cola: " << oMotor->getcontadorC();
-			;
+		points << "Puntaje: " << oMotor->getoJugador()->getentregados()	;
 		points.close();
 		// cargar progreso
 				/*int x;
@@ -220,7 +219,7 @@ namespace Project20 {
 				}
 				points.close();*/
 		
-		if (segundos % 100 == 0)
+		if (segundos % 50 == 0)
 		{
 			oMotor->AddClientes();
 			oMotor->addHelados();
@@ -228,10 +227,7 @@ namespace Project20 {
 		
 		}
 		
-		/*if (segundos % 50 == 0)
-		{
-			
-		}*/
+	
 		
 		
 		buffer->Render();
@@ -250,6 +246,12 @@ namespace Project20 {
 					archivo->Close();
 					delete archivo;
 				}
+						 void disminuirvidas() {
+
+							 vidas--;
+							 oMotor->getoJugador()->setx(90);
+							 oMotor->getoJugador()->sety(90);
+						 }
 	private: void cargar_archivo_vidas() {
 		XmlWriter^ archivo1 = XmlWriter::Create("Life.xml");
 		archivo1->WriteStartElement("Vidas");
@@ -338,6 +340,37 @@ private: System::Void btn_guardar_Click(System::Object^  sender, System::EventAr
 	this->cargar_archivo_puntaje();
 	this->cargar_archivo_vidas();
 	this->Close();
+}
+private: System::Void btn_cargar_Click(System::Object^  sender, System::EventArgs^  e) {
+	if (File::Exists("Datos.xml")) {
+		XmlReader^ cargar = gcnew XmlTextReader("Datos.xml");
+		while (cargar->Read()) {
+			if (cargar->NodeType == XmlNodeType::Element) {
+				if (cargar->Name == "Puntaje") {
+					segundos = Convert::ToInt32(cargar->ReadInnerXml());
+				}
+			}
+		}
+		cargar->Close();
+		delete cargar;
+	}
+	if (File::Exists("Life.xml")) {
+		XmlReader^ cargar1 = gcnew XmlTextReader("Life.xml");
+		while (cargar1->Read()) {
+			if (cargar1->NodeType == XmlNodeType::Element) {
+				if (cargar1->Name == "Vidas") {
+					segundos = Convert::ToInt32(cargar1->ReadInnerXml());
+				}
+			}
+		}
+		cargar1->Close();
+		delete cargar1;
+	}
+	this->btn_nuevo->Enabled = false;
+	this->btn_cargar->Enabled = false;
+	this->btn_nuevo->Visible = false;
+	this->btn_cargar->Visible = false;
+	this->timer1->Enabled = true;
 }
 };
 }
